@@ -48,18 +48,57 @@ export default function Home() {
   }, [])
 
   const certifications = [
-    { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services", year: 2023 },
-    { name: "Google Professional Cloud Architect", issuer: "Google Cloud", year: 2022 },
-    { name: "Microsoft Certified: Azure Solutions Architect Expert", issuer: "Microsoft", year: 2021 },
+    { name: "Frontend Developer (React)", issuer: "HackerRank", year: 2025 },
+    { name: "Google Cybersecurity", issuer: "Google - Coursera", year: 2024 },
+    { name: "Android Development Associate", issuer: "Logical Operations", year: 2022 },
+    { name: "Project Management Associate", issuer: "Logical Operations", year: 2022 },
+    { name: "Scrum Foundational Professional Certificate (SFPC)", issuer: "Certiprof", year: 2023 },
+    { name: "TOEFL (score 563)", issuer: "PT SARANA TUNAS MANDIRI", year: 2022 },
+    
   ]
 
   const skills = [
     { name: "React", icon: <Code className="w-6 h-6" /> },
-    { name: "Node.js", icon: <Server className="w-6 h-6" /> },
+    { name: "Next", icon: <Code className="w-6 h-6" /> },
+    { name: "Typescript", icon: <Code className="w-6 h-6" /> },
+    { name: "Javascript", icon: <Code className="w-6 h-6" /> },
+    { name: "PHP", icon: <Code className="w-6 h-6" /> },
     { name: "Python", icon: <Code className="w-6 h-6" /> },
-    { name: "AWS", icon: <Cloud className="w-6 h-6" /> },
-    { name: "Docker", icon: <Database className="w-6 h-6" /> },
+    { name: "Node.js", icon: <Server className="w-6 h-6" /> },
     { name: "Git", icon: <GitBranch className="w-6 h-6" /> },
+  ];
+
+  const projects = [
+    {
+      title: 'Merchant Apps Pertamina Subsidy',
+      description: 'A high-growth digital platform designed to streamline product and customer management while enhancing the sales process through advanced technology. It gained over 257,958 active users in its first year, demonstrating strong adoption. ',
+      heroUrl: '/assets/hero/hero-map.webp'
+    },
+    {
+      title: 'QRen Project',
+      description: 'QRen is a QR-based smart business and smart city solution that enhances digital transactions, including parking payments, market levies, e-ticketing, and billing payments. It also provides comprehensive administrative tools for managing legal proceedings, verification processes, and merchant interactions.',
+      heroUrl: '/assets/hero/hero-qr.webp'
+    },
+    {
+      title: 'Geisa SIAPDA',
+      description: 'SIAPDA is a school management system for a spesific city in Indonesia and it is designed to streamline data management for teachers, students, and learning resources.',
+      heroUrl: '/assets/hero/hero-si.webp'
+    },
+    {
+      title: 'Geisa Online Present',
+      description: 'An online employee CICO system that logs check-ins/outs with geolocation (latitude, longitude) and facial capture, and generates monthly data summaries.',
+      heroUrl: '/assets/hero/hero-cico.webp'
+    },
+    {
+      title: 'SIMRASIO',
+      description: 'SIMRASIO is a school management system for designed to streamline data management for teachers, students, and learning resources and separate by regions.',
+      heroUrl: '/assets/hero/hero-si.webp'
+    },
+    {
+      title: 'Sarang IT',
+      description: 'A collaborative platform where your team shares insights on programming, tech updates, and industry trends to enhance knowledge and skill development.',
+      heroUrl: '/assets/hero/hero-sit.webp'
+    },
   ]
 
   const fadeInUpVariants = {
@@ -109,13 +148,13 @@ export default function Home() {
                     {theme === "light" ? (
                       <Moon className="h-[1.2rem] w-[1.2rem] stroke-black" />
                     ) : (
-                      <Sun className="h-[1.2rem] w-[1.2rem]" />
+                      <Sun className="h-[1.2rem] w-[1.2rem] stroke-white" />
                     )}
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="md:hidden">
                   <Button onClick={toggleMenu} variant="ghost" size="icon" className="bg-transparent">
-                    {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    {isMenuOpen ? <X className={`h-6 w-6 ${theme === 'dark' ? 'stroke-white' : ''}`}/> : <Menu className={`h-6 w-6 ${theme === 'dark' ? 'stroke-white' : 'stroke-black'}`} />}
                   </Button>
                 </motion.div>
               </div>
@@ -161,9 +200,11 @@ export default function Home() {
               I'm a passionate developer crafting beautiful digital experiences
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <a href="#projects">
               <Button className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
                 Explore My Work
               </Button>
+              </a>
             </motion.div>
           </motion.section>
 
@@ -175,12 +216,13 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUpVariants}
           >
-            <div className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
+            <div className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">About Me</h2>
               <p className="text-gray-600 dark:text-gray-300">
-                I'm a creative developer with a passion for building beautiful and functional websites. With expertise
-                in modern web technologies, I bring ideas to life through code.
-              </p>
+              A passionate Frontend Developer with a strong foundation in ReactJS, NextJS, and TypeScript. Proven
+ track record of delivering scalable web applications and enhancing user experiences. Experienced in collaborating on multiple projects, including high-impact apps with over
+ 250,000 active users. Experienced in cloud deployment, unit testing, and UI/UX optimization, with hands-on
+ experience using tools like GCP, Docker, and Jenkins.</p>
             </div>
           </motion.section>
           <motion.section
@@ -193,23 +235,23 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">My Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((project) => (
+              {projects.map((project, idx) => (
                 <motion.div
-                  key={project}
-                  className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 rounded-lg overflow-hidden shadow-lg"
+                  key={idx}
+                  className="bg-white/30 dark:bg-gray-800/30 rounded-lg overflow-hidden shadow-lg"
                   whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 >
                   <Image
-                    src={`/placeholder.svg?text=Project+${project}`}
-                    alt={`Project ${project}`}
+                    src={project.heroUrl}
+                    alt={`Project ${project.title}`}
                     width={400}
                     height={200}
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Project {project}</h3>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      A brief description of the project and its key features.
+                      {project.description}
                     </p>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button
@@ -238,7 +280,7 @@ export default function Home() {
               {certifications.map((cert, index) => (
                 <motion.div
                   key={index}
-                  className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 rounded-lg p-6 shadow-lg"
+                  className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-6 shadow-lg"
                   whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 >
                   <Award className="w-12 h-12 text-blue-500 dark:text-blue-400 mb-4" />
@@ -259,7 +301,7 @@ export default function Home() {
             variants={fadeInUpVariants}
           >
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">Skills</h2>
-            <div className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
+            <div className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {skills.map((skill, index) => (
                   <motion.div
@@ -289,7 +331,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeInUpVariants}
           >
-            <div className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
+            <div className=" bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Get in Touch</h2>
               <form className="space-y-4">
                 <Input
