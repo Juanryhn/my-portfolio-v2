@@ -253,7 +253,7 @@ export default function Home() {
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                       {project.description}
                     </p>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div>
                       <Button
                         variant="outline"
                         className="text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
@@ -323,7 +323,7 @@ export default function Home() {
             </div>
           </motion.section>
 
-          <motion.section
+          {/* <motion.section
             id="contact"
             className="py-20"
             initial="hidden"
@@ -358,7 +358,7 @@ export default function Home() {
                 </motion.div>
               </form>
             </div>
-          </motion.section>
+          </motion.section> */}
         </main>
 
         <motion.footer
