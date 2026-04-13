@@ -240,7 +240,7 @@ export default function Home() {
             >
               <div>
                 <motion.span
-                  className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6"
+                  className="inline-block px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium mb-6"
                   whileHover={{ scale: 1.05 }}
                 >
                   Welcome to my digital space
@@ -363,7 +363,7 @@ export default function Home() {
                   <div className="p-6 md:p-8">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-2xl font-bold">{project.title}</h3>
-                      <span className="px-3 py-1 rounded-full bg-secondary/10 text-secondary text-sm font-medium">
+                      <span className="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-sm font-medium">
                         {project.impact}
                       </span>
                     </div>
@@ -376,7 +376,7 @@ export default function Home() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-lg bg-card text-xs font-medium text-secondary"
+                          className="px-3 py-1 rounded-lg bg-gray-200 text-xs font-medium text-gray-700"
                         >
                           {tag}
                         </span>
@@ -384,7 +384,7 @@ export default function Home() {
                     </div>
 
                     <motion.div whileHover={{ x: 4 }}>
-                      <Button variant="ghost" className="gap-2 text-secondary hover:bg-secondary/10">
+                      <Button variant="ghost" className="gap-2 text-foreground hover:bg-gray-200">
                         View Case Study
                         <ArrowRight className="w-4 h-4" />
                       </Button>
@@ -449,7 +449,7 @@ export default function Home() {
                     <div className="flex-1">
                       <h3 className="text-lg font-bold mb-1">{cert.name}</h3>
                       <p className="text-sm text-muted-foreground mb-2">{cert.issuer}</p>
-                      <span className="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-medium">
+                      <span className="inline-block px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-medium">
                         {cert.year}
                       </span>
                     </div>
