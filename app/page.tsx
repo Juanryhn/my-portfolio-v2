@@ -146,8 +146,8 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center gap-2"
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                  <Code2 className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center">
+                  <Code2 className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-xl font-bold gradient-text">Juan Rayhan</span>
               </motion.div>
@@ -160,7 +160,7 @@ export default function Home() {
                         href={`#${item}`}
                         className={`text-sm font-medium transition-colors ${
                           activeSection === item
-                            ? "text-secondary"
+                            ? "text-foreground font-bold"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
@@ -258,7 +258,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 pt-8">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a href="#projects">
-                    <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-lg gap-2">
+                    <Button className="bg-gray-800 text-white hover:bg-gray-900 px-8 py-6 text-lg gap-2">
                       Explore My Work
                       <ArrowRight className="w-5 h-5" />
                     </Button>
@@ -443,8 +443,8 @@ export default function Home() {
                   variants={itemVariants}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                      <Award className="w-6 h-6 text-accent" />
+                    <div className="p-3 rounded-lg bg-gray-200 group-hover:bg-gray-300 transition-colors">
+                      <Award className="w-6 h-6 text-gray-800" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold mb-1">{cert.name}</h3>
@@ -472,7 +472,7 @@ export default function Home() {
                 I&apos;m always interested in hearing about new projects and opportunities.
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-lg">
+                <Button className="bg-gray-800 text-white hover:bg-gray-900 px-8 py-6 text-lg">
                   Get in Touch
                 </Button>
               </motion.div>
