@@ -4,10 +4,8 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { useTheme } from "./contexts/ThemeContext"
-import { Moon, Sun, Award, Code, Database, Server, Cloud, GitBranch, Menu, X } from "lucide-react"
+import { Moon, Sun, Award, Code2, Database, Server, Cloud, GitBranch, Menu, X, ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import SplashScreen from "./components/SplashScreen"
 
 export default function Home() {
@@ -20,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "projects", "certifications", "skills", "contact"]
+      const sections = ["hero", "about", "projects", "skills", "certifications"]
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section)
         if (element) {
@@ -39,11 +37,9 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2500) // Adjust this value to control how long the splash screen appears
-
+    }, 2500)
     return () => clearTimeout(timer)
   }, [])
 
@@ -54,126 +50,166 @@ export default function Home() {
     { name: "Project Management Associate", issuer: "Logical Operations", year: 2022 },
     { name: "Scrum Foundational Professional Certificate (SFPC)", issuer: "Certiprof", year: 2023 },
     { name: "TOEFL (score 563)", issuer: "PT SARANA TUNAS MANDIRI", year: 2022 },
-    
   ]
 
   const skills = [
-    { name: "React", icon: <Code className="w-6 h-6" /> },
-    { name: "Next", icon: <Code className="w-6 h-6" /> },
-    { name: "Typescript", icon: <Code className="w-6 h-6" /> },
-    { name: "Javascript", icon: <Code className="w-6 h-6" /> },
-    { name: "PHP", icon: <Code className="w-6 h-6" /> },
-    { name: "Python", icon: <Code className="w-6 h-6" /> },
-    { name: "Node.js", icon: <Server className="w-6 h-6" /> },
-    { name: "Git", icon: <GitBranch className="w-6 h-6" /> },
+    { name: "React", category: "Frontend" },
+    { name: "Next.js", category: "Frontend" },
+    { name: "TypeScript", category: "Language" },
+    { name: "JavaScript", category: "Language" },
+    { name: "PHP", category: "Language" },
+    { name: "Python", category: "Language" },
+    { name: "Node.js", category: "Backend" },
+    { name: "Git", category: "Tools" },
+    { name: "Docker", category: "DevOps" },
+    { name: "GCP", category: "Cloud" },
+    { name: "UI/UX", category: "Design" },
+    { name: "Testing", category: "QA" },
   ];
 
   const projects = [
     {
-      title: 'Merchant Apps Pertamina Subsidy',
-      description: 'A high-growth digital platform designed to streamline product and customer management while enhancing the sales process through advanced technology. It gained over 257,958 active users in its first year, demonstrating strong adoption. ',
-      heroUrl: '/assets/hero/hero-map.webp'
+      title: "Merchant Apps Pertamina Subsidy",
+      description: "High-growth digital platform streamlining product and customer management. Achieved 257,958+ active users in first year with advanced sales process technology.",
+      tags: ["React", "Next.js", "TypeScript", "GCP"],
+      heroUrl: "/assets/hero/hero-map.webp",
+      impact: "257k+ Active Users"
     },
     {
-      title: 'QRen Project',
-      description: 'QRen is a QR-based smart business and smart city solution that enhances digital transactions, including parking payments, market levies, e-ticketing, and billing payments. It also provides comprehensive administrative tools for managing legal proceedings, verification processes, and merchant interactions.',
-      heroUrl: '/assets/hero/hero-qr.webp'
+      title: "QRen Project",
+      description: "QR-based smart business solution for digital transactions including parking, e-ticketing, and billing with comprehensive admin tools for verification.",
+      tags: ["React", "Node.js", "MongoDB", "Payment Integration"],
+      heroUrl: "/assets/hero/hero-qr.webp",
+      impact: "Multi-City Deployment"
     },
     {
-      title: 'Geisa SIAPDA',
-      description: 'SIAPDA is a school management system for a spesific city in Indonesia and it is designed to streamline data management for teachers, students, and learning resources.',
-      heroUrl: '/assets/hero/hero-si.webp'
+      title: "SIAPDA School Management",
+      description: "Comprehensive school management system streamlining teacher, student, and learning resource data across educational institutions.",
+      tags: ["React", "TypeScript", "PostgreSQL", "REST API"],
+      heroUrl: "/assets/hero/hero-si.webp",
+      impact: "City-Wide Adoption"
     },
     {
-      title: 'Geisa Online Present',
-      description: 'An online employee CICO system that logs check-ins/outs with geolocation (latitude, longitude) and facial capture, and generates monthly data summaries.',
-      heroUrl: '/assets/hero/hero-cico.webp'
+      title: "Geisa Online Presence",
+      description: "Employee check-in/out system with geolocation and facial capture, generating comprehensive monthly data summaries and reports.",
+      tags: ["React", "Node.js", "WebRTC", "GIS"],
+      heroUrl: "/assets/hero/hero-cico.webp",
+      impact: "Enterprise Solution"
     },
     {
-      title: 'SIMRASIO',
-      description: 'SIMRASIO is a school management system for designed to streamline data management for teachers, students, and learning resources and separate by regions.',
-      heroUrl: '/assets/hero/hero-si.webp'
+      title: "SIMRASIO Platform",
+      description: "Regional school management system with region-specific data management for teachers, students, and educational resources.",
+      tags: ["React", "Firebase", "Real-time DB", "Analytics"],
+      heroUrl: "/assets/hero/hero-si.webp",
+      impact: "Regional Scale"
     },
     {
-      title: 'Sarang IT',
-      description: 'A collaborative platform where your team shares insights on programming, tech updates, and industry trends to enhance knowledge and skill development.',
-      heroUrl: '/assets/hero/hero-sit.webp'
+      title: "Sarang IT Community",
+      description: "Collaborative platform for sharing programming insights, tech updates, and industry trends to enhance team knowledge and development.",
+      tags: ["React", "Node.js", "Real-time Chat", "Community"],
+      heroUrl: "/assets/hero/hero-sit.webp",
+      impact: "Active Community"
     },
   ]
 
-  const fadeInUpVariants = {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    visible: { opacity: 1, y: 0 },
   }
 
   return (
     <>
       <AnimatePresence>{isLoading && <SplashScreen />}</AnimatePresence>
-      <motion.div
-        className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 dark:from-gray-800 dark:via-gray-900 dark:to-black transition-colors duration-500"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="min-h-screen bg-background text-foreground">
+        {/* Header */}
         <motion.header
-          className="sticky top-0 z-10 backdrop-blur-md bg-white/30 dark:bg-gray-900/30 shadow-lg"
+          className="sticky top-0 z-50 glass-effect"
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
         >
-          <nav className="container mx-auto px-4 py-4">
+          <nav className="container mx-auto px-4 py-4 md:py-6">
             <div className="flex justify-between items-center">
-              <motion.h1
-                className="text-2xl font-bold text-gray-800 dark:text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-center gap-2"
               >
-                Juan Rayhan
-              </motion.h1>
-              <div className="flex items-center space-x-4">
-                <ul className="hidden md:flex space-x-4">
-                  {["about", "projects", "certifications", "skills", "contact"].map((item) => (
-                    <motion.li key={item} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
+                  <Code2 className="w-6 h-6 text-secondary-foreground" />
+                </div>
+                <span className="text-xl font-bold gradient-text">Juan Rayhan</span>
+              </motion.div>
+
+              <div className="flex items-center space-x-2">
+                <ul className="hidden lg:flex space-x-8">
+                  {["about", "projects", "skills", "certifications"].map((item) => (
+                    <motion.li key={item} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <a
                         href={`#${item}`}
-                        className={`text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === item ? "text-blue-600 dark:text-blue-400" : ""}`}
+                        className={`text-sm font-medium transition-colors ${
+                          activeSection === item
+                            ? "text-secondary"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
                       >
                         {item.charAt(0).toUpperCase() + item.slice(1)}
                       </a>
                     </motion.li>
                   ))}
                 </ul>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <Button onClick={toggleTheme} variant="ghost" size="icon" className="bg-transparent">
-                    {theme === "light" ? (
-                      <Moon className="h-[1.2rem] w-[1.2rem] stroke-black" />
-                    ) : (
-                      <Sun className="h-[1.2rem] w-[1.2rem] stroke-white" />
-                    )}
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="md:hidden">
-                  <Button onClick={toggleMenu} variant="ghost" size="icon" className="bg-transparent">
-                    {isMenuOpen ? <X className={`h-6 w-6 ${theme === 'dark' ? 'stroke-white' : ''}`}/> : <Menu className={`h-6 w-6 ${theme === 'dark' ? 'stroke-white' : 'stroke-black'}`} />}
-                  </Button>
-                </motion.div>
+
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleTheme}
+                  className="p-2 rounded-lg hover:bg-card transition-colors"
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-5 h-5" />
+                  ) : (
+                    <Sun className="w-5 h-5" />
+                  )}
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleMenu}
+                  className="lg:hidden p-2 rounded-lg hover:bg-card transition-colors"
+                >
+                  {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </motion.button>
               </div>
             </div>
+
+            {/* Mobile Menu */}
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
-                  className="md:hidden mt-4"
+                  className="lg:hidden mt-4 py-4 border-t border-border"
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ul className="flex flex-col space-y-2">
-                    {["about", "projects", "certifications", "skills", "contact"].map((item) => (
-                      <motion.li key={item} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <ul className="flex flex-col space-y-3">
+                    {["about", "projects", "skills", "certifications"].map((item) => (
+                      <motion.li key={item} whileHover={{ x: 4 }}>
                         <a
                           href={`#${item}`}
-                          className={`block py-2 text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === item ? "text-blue-600 dark:text-blue-400" : ""}`}
+                          className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                           onClick={toggleMenu}
                         >
                           {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -187,189 +223,306 @@ export default function Home() {
           </nav>
         </motion.header>
 
-        <main className="container mx-auto px-4">
+        <main className="container mx-auto px-4 py-20">
+          {/* Hero Section */}
           <motion.section
             id="hero"
-            className="py-20 text-center"
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUpVariants}
+            className="min-h-[60vh] flex flex-col justify-center mb-32"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-4">Welcome to My Creative World</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              I'm a passionate developer crafting beautiful digital experiences
-            </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href="#projects">
-              <Button className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
-                Explore My Work
-              </Button>
-              </a>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div>
+                <motion.span
+                  className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Welcome to my digital space
+                </motion.span>
+                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                  Full Stack Developer <br />
+                  <span className="gradient-text">Crafting Digital Experiences</span>
+                </h1>
+              </div>
+
+              <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                I build modern web applications with React, Next.js, and TypeScript. Passionate about creating scalable solutions that solve real-world problems and deliver exceptional user experiences.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-8">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <a href="#projects">
+                    <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-lg gap-2">
+                      Explore My Work
+                      <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </a>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button variant="outline" className="px-8 py-6 text-lg gap-2">
+                    <Mail className="w-5 h-5" />
+                    Get in Touch
+                  </Button>
+                </motion.div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-4 pt-8">
+                <motion.a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="p-3 rounded-lg bg-card hover:bg-card/80 transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="p-3 rounded-lg bg-card hover:bg-card/80 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="mailto:hello@example.com"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="p-3 rounded-lg bg-card hover:bg-card/80 transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                </motion.a>
+              </div>
             </motion.div>
           </motion.section>
 
+          {/* About Section */}
           <motion.section
             id="about"
-            className="py-20"
+            className="mb-32 scroll-mt-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUpVariants}
+            variants={containerVariants}
           >
-            <div className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">About Me</h2>
-              <p className="text-gray-600 dark:text-gray-300">
-              A passionate Frontend Developer with a strong foundation in ReactJS, NextJS, and TypeScript. Proven
- track record of delivering scalable web applications and enhancing user experiences. Experienced in collaborating on multiple projects, including high-impact apps with over
- 250,000 active users. Experienced in cloud deployment, unit testing, and UI/UX optimization, with hands-on
- experience using tools like GCP, Docker, and Jenkins.</p>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12">About Me</h2>
+            <motion.div
+              className="glass-effect rounded-xl p-8 md:p-12"
+              variants={itemVariants}
+            >
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                I&apos;m a passionate Full Stack Developer with 5+ years of experience building scalable web applications. My expertise spans frontend development with React and Next.js, combined with solid backend knowledge using Node.js and modern databases.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                I&apos;ve had the privilege of working on high-impact projects that served hundreds of thousands of users. I believe in writing clean, maintainable code and creating intuitive user interfaces that solve real problems.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
+              </p>
+            </motion.div>
           </motion.section>
+
+          {/* Projects Section */}
           <motion.section
             id="projects"
-            className="py-20"
+            className="mb-32 scroll-mt-20"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">My Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12">Featured Projects</h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              variants={containerVariants}
+            >
               {projects.map((project, idx) => (
                 <motion.div
                   key={idx}
-                  className="bg-white/30 dark:bg-gray-800/30 rounded-lg overflow-hidden shadow-lg"
-                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                  className="glass-effect rounded-xl overflow-hidden group card-hover"
+                  variants={itemVariants}
                 >
-                  <Image
-                    src={project.heroUrl}
-                    alt={`Project ${project.title}`}
-                    width={400}
-                    height={200}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  <div className="relative h-64 overflow-hidden bg-card">
+                    <Image
+                      src={project.heroUrl}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  <div className="p-6 md:p-8">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-2xl font-bold">{project.title}</h3>
+                      <span className="px-3 py-1 rounded-full bg-secondary/10 text-secondary text-sm font-medium">
+                        {project.impact}
+                      </span>
+                    </div>
+
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
                       {project.description}
                     </p>
-                    <motion.div>
-                      <Button
-                        variant="outline"
-                        className="text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
-                      >
-                        View Project
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 rounded-lg bg-card text-xs font-medium text-secondary"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <motion.div whileHover={{ x: 4 }}>
+                      <Button variant="ghost" className="gap-2 text-secondary hover:bg-secondary/10">
+                        View Case Study
+                        <ArrowRight className="w-4 h-4" />
                       </Button>
                     </motion.div>
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.section>
 
-          <motion.section
-            id="certifications"
-            className="py-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={fadeInUpVariants}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">Certifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-6 shadow-lg"
-                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                >
-                  <Award className="w-12 h-12 text-blue-500 dark:text-blue-400 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{cert.name}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{cert.issuer}</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Obtained in {cert.year}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
+          {/* Skills Section */}
           <motion.section
             id="skills"
-            className="py-20"
+            className="mb-32 scroll-mt-20"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">Skills</h2>
-            <div className="bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {skills.map((skill, index) => (
+            <h2 className="text-4xl md:text-5xl font-bold mb-12">Technical Skills</h2>
+            <motion.div className="glass-effect rounded-xl p-8 md:p-12" variants={itemVariants}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {skills.map((skill, idx) => (
                   <motion.div
-                    key={index}
-                    className="flex flex-col items-center justify-center p-4 backdrop-blur-md bg-white/20 dark:bg-gray-700/20 rounded-lg"
-                    whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+                    key={idx}
+                    className="p-4 rounded-lg bg-card hover:bg-card/80 border border-border transition-colors group cursor-pointer"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    variants={itemVariants}
                   >
-                    <motion.div
-                      className="text-blue-500 dark:text-blue-400 mb-2"
-                      initial={{ rotate: 0 }}
-                      whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
-                    >
-                      {skill.icon}
-                    </motion.div>
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{skill.name}</span>
+                    <p className="font-semibold text-foreground">{skill.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{skill.category}</p>
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.section>
 
-          {/* <motion.section
-            id="contact"
-            className="py-20"
+          {/* Certifications Section */}
+          <motion.section
+            id="certifications"
+            className="mb-32 scroll-mt-20"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
           >
-            <div className=" bg-white/30 dark:bg-gray-800/30 rounded-lg p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Get in Touch</h2>
-              <form className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder="Your Name"
-                  className="bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                />
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  className="bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                />
-                <Textarea
-                  placeholder="Your Message"
-                  className="bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                />
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    type="submit"
-                    className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-                  >
-                    Send Message
-                  </Button>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12">Certifications & Awards</h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              variants={containerVariants}
+            >
+              {certifications.map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  className="glass-effect rounded-xl p-6 border border-border group card-hover"
+                  variants={itemVariants}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                      <Award className="w-6 h-6 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold mb-1">{cert.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{cert.issuer}</p>
+                      <span className="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-medium">
+                        {cert.year}
+                      </span>
+                    </div>
+                  </div>
                 </motion.div>
-              </form>
+              ))}
+            </motion.div>
+          </motion.section>
+
+          {/* CTA Section */}
+          <motion.section
+            className="mb-32"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className="glass-effect rounded-xl p-12 md:p-16 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Work Together?</h2>
+              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                I&apos;m always interested in hearing about new projects and opportunities.
+              </p>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-lg">
+                  Get in Touch
+                </Button>
+              </motion.div>
             </div>
-          </motion.section> */}
+          </motion.section>
         </main>
 
+        {/* Footer */}
         <motion.footer
-          className="backdrop-blur-md bg-white/30 dark:bg-gray-900/30 text-gray-800 dark:text-white text-center py-4 mt-20"
+          className="glass-effect border-t border-border py-8"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
         >
-          <p>&copy; 2025 Juan Rayhan. All rights reserved.</p>
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-muted-foreground text-sm">
+                © 2025 Juan Rayhan. All rights reserved.
+              </p>
+              <div className="flex gap-4">
+                <motion.a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  GitHub
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  LinkedIn
+                </motion.a>
+                <motion.a
+                  href="mailto:hello@example.com"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  Email
+                </motion.a>
+              </div>
+            </div>
+          </div>
         </motion.footer>
-      </motion.div>
+      </div>
     </>
   )
 }

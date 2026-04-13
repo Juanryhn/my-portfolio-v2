@@ -1,14 +1,15 @@
 import "./globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
 import { ThemeProvider } from "./contexts/ThemeContext"
-import type React from "react" // Added import for React
+import type React from "react"
 
-const inter = Inter({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 
 export const metadata: Metadata = {
-  title: "Juan Rayhan",
-  description: "Showcase of my works",
+  title: "Juan Rayhan - Full Stack Developer",
+  description: "Creative developer crafting modern digital experiences with React, Next.js, and TypeScript",
+  viewport: "width=device-width, initial-scale=1.0",
 }
 
 export default function RootLayout({
@@ -17,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="bg-background">
+      <body className={`${spaceGrotesk.className} bg-background text-foreground`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
