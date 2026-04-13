@@ -20,6 +20,20 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // High-Performance Dashboard: Slate & Amber
+        slate: {
+          950: "#09090b",  // Dark zinc background
+          900: "#18181b",  // Secondary background
+          800: "#27272a",  // Card backgrounds
+          700: "#3f3f46",  // Borders
+          600: "#52525b",  // Muted text
+        },
+        amber: {
+          400: "#fbbf24",  // Bright highlights (CTAs)
+          500: "#f59e0b",  // Primary accent
+          600: "#d97706",  // Hover state
+          950: "#78350f",  // Dark amber (accent supports)
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -37,16 +51,16 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#f59e0b",  // Amber 500
+          foreground: "#09090b",  // Slate 950 text on amber
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#18181b",  // Zinc 900
+          foreground: "#fafafa",  // Off-white text
         },
       },
     },
