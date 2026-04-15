@@ -125,6 +125,8 @@ export default function Home() {
         <motion.section
           id="hero"
           className="min-h-screen flex flex-col justify-center items-center px-4 md:px-8 pt-20"
+          initial={ANIMATION_PRESETS.hiddenVariants?.hidden}
+          animate={ANIMATION_PRESETS.hiddenVariants?.visible}
         >
           <div className="max-w-5xl mx-auto text-center space-y-6">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
@@ -285,12 +287,13 @@ export default function Home() {
 
             <BentoGrid gap="md">
               {PROJECTS_FEATURED.map((project, idx) => {
-                const { colSpan, ...cardProps } = project
-                const bentoColSpan = colSpan === "2" ? 2 : 1
+                const bentoProps: any = {
+                  colSpan: project.colSpan === 2 ? 2 : 1,
+                }
 
                 return (
-                  <BentoGridItem key={project.id} colSpan={bentoColSpan} index={idx}>
-                    <ProjectCard {...cardProps} colSpan={colSpan as "1" | "2"} />
+                  <BentoGridItem key={project.id} {...bentoProps} index={idx}>
+                    <ProjectCard {...project} />
                   </BentoGridItem>
                 )
               })}
@@ -470,4 +473,3 @@ export default function Home() {
     </div>
   )
 }
-
